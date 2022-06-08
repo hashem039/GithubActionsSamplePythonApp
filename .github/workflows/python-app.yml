@@ -42,7 +42,7 @@ jobs:
     - name: Deploy to Heroku
       env:
         HEROKU_API_TOKEN: ${{ secrets.HEROKU_ACCESS_TOKEN }}
-      if: github.ref == 'refs/heads/master' && job.status == 'success'
-      run: |
-        git remote add heroku https://heroku:$HEROKU_API_TOKEN@git.heroku.com/hidden-harbor-27029.git
-        git push heroku HEAD:master -f
+        if: github.ref == 'refs/heads/master' && job.status == 'success'
+        run: |
+          git remote add heroku https://heroku:$HEROKU_API_TOKEN@git.heroku.com/hidden-harbor-27029.git
+          git push heroku HEAD:master -f
